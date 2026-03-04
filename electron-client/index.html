@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src  'self';
+        style-src   'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+        font-src    'self' data: https://cdn.jsdelivr.net;
+        img-src     'self' data: https:;
+        connect-src 'self' http://localhost http://127.0.0.1;
+    ">
+    <title>T.C. Silivri Belediyesi — Dijital Hizmet Noktası</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <nav id="kiosk-navbar" class="kiosk-navbar" aria-hidden="true">
+        <div class="nav-left">
+            <button class="btn-nav-back" id="btn-go-home"><i class="bi bi-arrow-left"></i> Ana
+                Menü</button>
+        </div>
+        <h2 class="nav-title" id="nav-title">T.C. Silivri Belediyesi</h2>
+        <div class="nav-right">
+            <i class="bi bi-clock-history"></i> <span id="idle-countdown">2:00</span>
+        </div>
+    </nav>
+
+    <div id="screen-splash" class="screen active">
+        <div class="splash-bg" id="splash-bg"></div>
+        <div class="splash-overlay"></div>
+        <div class="splash-content">
+            <div class="splash-logo-mask"></div>
+            <h1 class="splash-title">DİJİTAL HİZMET <span>NOKTASI</span></h1>
+            <div class="splash-pulse">
+                <div class="pulse-ring"></div>
+                <i class="bi bi-hand-index-thumb"></i>
+                <span>BAŞLAMAK İÇİN DOKUNUN</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-main" class="screen">
+        <header class="header">
+            <div class="header-logo-mask"></div>
+            <div class="clock-wrap">
+                <div class="clock-date-group">
+                    <span id="day-display">--</span>
+                    <span id="date-display">--</span>
+                </div>
+                <div class="clock-time" id="clock">--:--</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="page-title-area">
+                <h2 class="page-title">Hızlı Erişim <span>Menüsü</span></h2>
+                <p class="page-subtitle">Aşağıdaki hizmetlerden birini seçerek işleminize başlayabilirsiniz.</p>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid" id="service-grid">
+                    <div class="status-box" id="grid-loading">
+                        <div class="spinner"></div>
+                        <p>Yükleniyor...</p>
+                    </div>
+                </div>
+                <div class="status-box" id="grid-error" style="display:none">
+                    <i class="bi bi-exclamation-circle text-danger"></i>
+                    <p>Bağlantı kurulamadı</p>
+                    <button class="btn-primary" id="btn-retry-services"><i class="bi bi-arrow-clockwise"></i> Tekrar
+                        Dene</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-info">2026 © T.C. Silivri Belediyesi Bilgi İşlem Müdürlüğü</div>
+            <div class="footer-brand-mask"></div>
+        </footer>
+    </div>
+
+
+    <div class="toast" id="toast"><i class="bi bi-shield-x"></i> <span id="toast-text"></span></div>
+
+    <div class="timeout-modal" id="timeout-overlay" style="display:none">
+        <div class="timeout-content">
+            <div class="timeout-icon"><i class="bi bi-hourglass-split"></i></div>
+            <h3>Oturumunuz Kapanıyor</h3>
+            <div class="timeout-timer" id="timeout-count">10</div>
+            <p>Hareketsizlik sebebiyle ana ekrana dönülecek.</p>
+            <button class="btn-primary lg w-100" id="btn-cancel-timeout">İşleme Devam Et</button>
+        </div>
+    </div>
+
+    <script src="assets/js/renderer.js"></script>
+</body>
+
+</html>

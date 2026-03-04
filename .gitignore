@@ -1,0 +1,12 @@
+# Ortama özgü kimlik bilgileri — ASLA commit etme
+backend/config.php
+
+# Node modules
+electron-client/node_modules/
+
+# macOS
+.DS_Store
+
+# Editör
+.vscode/
+*.swp
